@@ -18,10 +18,11 @@ struct GlobalCryptoView: View {
                     .shadow(radius: 10)
             } else {
                 if let errorMessage = viewModel.errorMessage {
-                    Text(errorMessage)
-                        .font(.title3)
-                        .bold()
-                        .foregroundStyle(Color.red)
+                    Button(errorMessage, role: .destructive) {
+                        viewModel.onAppear()
+                    }
+                    .buttonStyle(.borderedProminent)
+                    
                 } else {
                     List {
                         ForEach(viewModel.cryptos, id: \.id) {
