@@ -20,8 +20,8 @@ class GlobalCryptoFactory {
                                       domainMapper: CryptoCurrencyDomainMapper())
     }
     
-    private func createDataSource() -> APIDataSourceProtocol {
-        return APICryptoDataSource.init(httpClient: createHTTPClient())
+    private func createDataSource() -> APICurrenciesDataSourceProtocol {
+        return APICurrenciesDataSource(httpClient: createHTTPClient())
     }
     
     private func createHTTPClient() -> HTTPClientProtocol {

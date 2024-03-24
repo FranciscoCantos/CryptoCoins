@@ -1,6 +1,6 @@
 import Foundation
  
-class APICryptoDataSource: APIDataSourceProtocol {
+class APICurrenciesDataSource: APICurrenciesDataSourceProtocol {
     private let httpClient: HTTPClientProtocol
     private let baseURL = "https://api.coingecko.com/api/v3/"
     
@@ -56,7 +56,7 @@ class APICryptoDataSource: APIDataSourceProtocol {
             "vs_currencies": "usd", // Kurro TODO
             "include_market_cap": "true",
             "include_24hr_vol": "true",
-            "include_24hr_change": "true",
+            "include_24hr_change": "true"
         ]
         let request = HTTPRequest(baseURL: baseURL,
                                   path: Paths.simplePrice.rawValue,

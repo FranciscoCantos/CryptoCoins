@@ -1,11 +1,11 @@
 import Foundation
 
 class GlobalCryptoRepository: GlobalCryptoRepositoryProtocol {
-    private let apiDataSource: APIDataSourceProtocol
+    private let apiDataSource: APICurrenciesDataSourceProtocol
     private let errorMapper: DomainErrorMapper
     private let domainMapper: CryptoCurrencyDomainMapper
     
-    init(apiDataSource: APIDataSourceProtocol, errorMapper: DomainErrorMapper, domainMapper: CryptoCurrencyDomainMapper) {
+    init(apiDataSource: APICurrenciesDataSourceProtocol, errorMapper: DomainErrorMapper, domainMapper: CryptoCurrencyDomainMapper) {
         self.apiDataSource = apiDataSource
         self.errorMapper = errorMapper
         self.domainMapper = domainMapper
