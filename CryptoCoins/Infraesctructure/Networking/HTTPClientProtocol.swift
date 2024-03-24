@@ -1,10 +1,10 @@
 import Foundation
 
-protocol HTTPClient {
+protocol HTTPClientProtocol {
     func makeRequest(_ request: HTTPRequest) async -> Result<Data, HTTPClientError>
 }
 
-class HTTPNetworkClient: HTTPClient {
+class HTTPClient: HTTPClientProtocol {
     let session: URLSession
     let errorsResolver: HTTPErrorsResolver
     let requestBuilder: HTTPRequestBuilder

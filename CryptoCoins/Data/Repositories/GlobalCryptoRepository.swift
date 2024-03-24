@@ -1,17 +1,17 @@
 import Foundation
 
-class CryptoCurrencyRepository: GlobalCryptoRepositoryType {
-    private let apiDataSource: APIDataSourceType
-    private let errorMapper: CryptoCurrencyDomainErrorMapper
+class GlobalCryptoRepository: GlobalCryptoRepositoryProtocol {
+    private let apiDataSource: APIDataSourceProtocol
+    private let errorMapper: DomainErrorMapper
     private let domainMapper: CryptoCurrencyDomainMapper
     
-    init(apiDataSource: APIDataSourceType, errorMapper: CryptoCurrencyDomainErrorMapper, domainMapper: CryptoCurrencyDomainMapper) {
+    init(apiDataSource: APIDataSourceProtocol, errorMapper: DomainErrorMapper, domainMapper: CryptoCurrencyDomainMapper) {
         self.apiDataSource = apiDataSource
         self.errorMapper = errorMapper
         self.domainMapper = domainMapper
     }
     
-     func getGlobalCryptoList() async -> Result<[CryptoCurrency], CryptoCurrencyDomainError> {
+     func getGlobalCryptoList() async -> Result<[CryptoCurrency], DomainError> {
         let symbolsResult = await apiDataSource.getGlobalCryptoSimbols()
         let cryptosResult = await apiDataSource.getCryptoCurrencies()
         

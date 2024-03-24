@@ -1,7 +1,7 @@
 import Foundation
  
-class APICryptoDataSource: APIDataSourceType {
-    private let httpClient: HTTPClient
+class APICryptoDataSource: APIDataSourceProtocol {
+    private let httpClient: HTTPClientProtocol
     private let baseURL = "https://api.coingecko.com/api/v3/"
     
     private enum Paths: String {
@@ -10,7 +10,7 @@ class APICryptoDataSource: APIDataSourceType {
         case simplePrice = "simple/price"
     }
     
-    init(httpClient: HTTPClient) {
+    init(httpClient: HTTPClientProtocol) {
         self.httpClient = httpClient
     }
 
@@ -52,11 +52,11 @@ class APICryptoDataSource: APIDataSourceType {
     
     func getPriceInfoForCryptos(id: [String]) async -> Result<[String: CryptoCurrencyPriceInfoDTO], HTTPClientError> {
         let params: [String: Any] = [
-            "ids": id,
+            "ids": id.joined(separator: ","),
             "vs_currencies": "usd", // Kurro TODO
-            "include_market_cap": true,
-            "include_24hr_vol": true,
-            "include_24hr_change": true,
+            "include_market_cap": "true",
+            "include_24hr_vol": "true",
+            "include_24hr_change": "true",
         ]
         let request = HTTPRequest(baseURL: baseURL,
                                   path: Paths.simplePrice.rawValue,

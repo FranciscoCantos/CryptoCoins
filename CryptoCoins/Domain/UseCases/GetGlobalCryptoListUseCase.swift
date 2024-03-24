@@ -1,13 +1,17 @@
 import Foundation
 
-class GetGlobalCryptoListUseCase {
-    private let repository: GlobalCryptoRepositoryType
+protocol GetGlobalCryptoListUseCaseProtocol {
+    func execute() async -> Result<[CryptoCurrency], DomainError>
+}
+
+class GetGlobalCryptoListUseCase: GetGlobalCryptoListUseCaseProtocol {
+    private let repository: GlobalCryptoRepositoryProtocol
     
-    init(repository: GlobalCryptoRepositoryType) {
+    init(repository: GlobalCryptoRepositoryProtocol) {
         self.repository = repository
     }
     
-    func execute() async -> Result<[CryptoCurrency], CryptoCurrencyDomainError> {
+    func execute() async -> Result<[CryptoCurrency], DomainError> {
         let result = await repository.getGlobalCryptoList()
         
         guard let cryptoList = try? result.get() else {
