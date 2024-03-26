@@ -1,10 +1,12 @@
 import SwiftUI
 
 struct GlobalCryptoView: View {
+    private let createCryptoDetailView: CreateCryptoDetailViewProtocol
     @ObservedObject private var viewModel: GlobalCryptoViewModel
     
-    init(viewModel: GlobalCryptoViewModel) {
+    init(viewModel: GlobalCryptoViewModel, createCryptoDetailView: CreateCryptoDetailViewProtocol) {
         self.viewModel = viewModel
+        self.createCryptoDetailView = createCryptoDetailView
     }
     
     var body: some View {
@@ -13,7 +15,7 @@ struct GlobalCryptoView: View {
                 ProgressView()
                     .progressViewStyle(.circular)
                     .scaleEffect(3.0, anchor: .center)
-                    .frame(width: 100, height: 100)
+                    .frame(width: 80, height: 80)
                     .clipShape(Circle())
                     .shadow(radius: 10)
             } else {
@@ -24,9 +26,15 @@ struct GlobalCryptoView: View {
                     .buttonStyle(.borderedProminent)
                     
                 } else {
-                    List {
-                        ForEach(viewModel.cryptos, id: \.id) {
-                            CryptoItemView(item: $0)
+                    NavigationStack {
+                        List {
+                            ForEach(viewModel.cryptos, id: \.id) { crypto in
+                                NavigationLink {
+                                    createCryptoDetailView.createView(cryptoCurrency: crypto)
+                                } label: {
+                                    CryptoItemView(item: crypto)
+                                }
+                            }
                         }
                     }
                 }

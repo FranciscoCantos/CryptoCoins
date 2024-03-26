@@ -4,7 +4,7 @@ import SwiftUI
 struct CryptoCoinsApp: App {
     var body: some Scene {
         WindowGroup {
-            GlobalCryptoFactory().createGlobalCryptoView()
+            GlobalCryptoFactory().createView()
         }
     }
 }

@@ -14,6 +14,4 @@ class GetPriceHistoryUseCase: GetPriceHistoryUseCaseProtocol {
     func execute(id: String, days: Int) async -> Result<PriceHistory, DomainError> {
         return await repository.getPriceHistory(id: id, days: days)
     }
-    
-    
 }

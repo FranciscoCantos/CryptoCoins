@@ -28,6 +28,7 @@ class GlobalCryptoViewModel: ObservableObject {
 
             Task { @MainActor in
                 self.showLoading = false
+                self.errorMessage = nil
                 self.cryptos = cryptoCurrencies
             }
         }

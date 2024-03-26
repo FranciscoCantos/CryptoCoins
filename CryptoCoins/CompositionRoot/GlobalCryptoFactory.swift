@@ -1,8 +1,9 @@
 import Foundation
 
 class GlobalCryptoFactory {
-    func createGlobalCryptoView() -> GlobalCryptoView {
-        return GlobalCryptoView(viewModel: createViewModel())
+    func createView() -> GlobalCryptoView {
+        return GlobalCryptoView(viewModel: createViewModel(), 
+                                createCryptoDetailView: CryptoDetailFactory())
     }
     
     private func createViewModel() -> GlobalCryptoViewModel {

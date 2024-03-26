@@ -10,8 +10,8 @@ class APIPricesDataSource: APIPricesDataSourceProtocol {
     
     func getPriceHistory(id: String, days: Int) async -> Result<PriceHistoryDTO, HTTPClientError> {
         let params: [String: Any] = [
-            "vs_currencies": "usd", // Kurro TODO
-            "days": days,
+            "vs_currency": "usd", // Kurro TODO
+            "days": "\(days)",
             "interval": "daily",
         ]
         let request = HTTPRequest(baseURL: baseURL,
