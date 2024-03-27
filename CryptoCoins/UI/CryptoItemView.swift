@@ -9,7 +9,6 @@ struct CryptoItemView: View {
                 VStack(alignment: .leading) {
                     Text(item.name)
                         .font(.title3)
-                        .lineLimit(1)
                     Text(item.symbol.uppercased())
                         .font(.headline)
                         .bold()
@@ -27,19 +26,19 @@ struct CryptoItemView: View {
             HStack {
                 VStack(alignment: .leading) {
                     Text("Market Cap:")
-                        .font(.system(size: 10))
+                        .font(.system(size: 12))
                         .lineLimit(1)
                     Text("24h:")
-                        .font(.system(size: 10))
-                        .bold()
+                        .font(.system(size: 12))
+                        .lineLimit(1)
                 }
                 Spacer()
-                VStack(alignment: .leading) {
+                VStack(alignment: .trailing) {
                     Text(item.marketCap)
-                        .font(.system(size: 10))
+                        .font(.system(size: 12))
                         .lineLimit(1)
                     Text(item.volume24h)
-                        .font(.system(size: 10))
+                        .font(.system(size: 12))
                         .bold()
                 }
             }

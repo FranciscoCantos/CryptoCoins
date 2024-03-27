@@ -8,4 +8,11 @@ extension Double {
         
         return formatter.string(from: NSNumber(floatLiteral: self))
     }
+    
+    func toTwoDigitsFormat() -> String? {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        
+        return formatter.string(from: NSNumber(floatLiteral: self))
+    }
 }
