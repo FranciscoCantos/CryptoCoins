@@ -1,11 +1,14 @@
 import Foundation
 
-class PriceHistoryDomainMapper {
+class PriceHistoryDomainMapper {    
     func map(model: PriceHistoryDTO) -> PriceHistory {
         let dataPoints: [PriceHistory.DataPoint] = model.prices.compactMap { dataPoint in
+            
             guard dataPoint.count >= 2,
                   let date = timestampToDate(dataPoint[0]) else { return nil }
-            return PriceHistory.DataPoint(price: dataPoint[1].toCurrency(), date: date)
+            
+            return PriceHistory.DataPoint(price: dataPoint[1],
+                                          date: date)
         }
         
         return PriceHistory(prices: dataPoints)

@@ -1,8 +1,11 @@
 import Foundation
 
 extension Double {
-    func toCurrency() -> Double {
-        let divisor = pow(10.0, Double(4))
-        return (self * divisor).rounded() / divisor
+    func toCurrency() -> String? {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .currency
+        formatter.currencyCode = "USD"
+        
+        return formatter.string(from: NSNumber(floatLiteral: self))
     }
 }
