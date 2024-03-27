@@ -1,7 +1,7 @@
 import Foundation
 
 enum DaysSelection: String, CaseIterable {
-    case day = "1 Day"
+    case week = "7 Day"
     case month = "30 Days"
     case treeMonth = "90 Days"
     case sixMonth = "180 Days"
@@ -9,8 +9,8 @@ enum DaysSelection: String, CaseIterable {
     
     var intValue: Int {
         switch self {
-        case .day:
-            1
+        case .week:
+            7
         case .month:
             30
         case .treeMonth:

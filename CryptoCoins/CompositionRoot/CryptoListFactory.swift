@@ -8,7 +8,7 @@ class CryptoListFactory {
     private func createViewModel() -> CryptoListViewModel {
         return CryptoListViewModel(getCryptoListUseCase: createGetCryptoListUseCase(),
                                    searchCryptoListUseCase: createSearchCryptoListUseCase(),
-                                     errorMapper: PresentationErrorMapper())
+                                   errorMapper: PresentationErrorMapper())
     }
     
     private func createGetCryptoListUseCase() -> GetCryptoListUseCaseProtocol {
@@ -22,11 +22,12 @@ class CryptoListFactory {
     private func createRepository() -> CryptoCurrencyRepositoryProtocol {
         return CryptoCurrencyRepository(apiDataSource: createDataSource(),
                                         cacheDataSource: createCacheDataSource(),
-                                      errorMapper: DomainErrorMapper())
+                                        errorMapper: DomainErrorMapper())
     }
     
     private func createCacheDataSource() -> CacheCurrenciesBasicDataSourceProtocol {
-        return CacheCurrenciesBasicDataSource.shared()
+        return CryptoCurrencyBasicInfoCacheStrategy(temporalCache: CacheCurrenciesBasicDataSource.shared(),
+                                                    persitanceCache: SwiftDataCacheDataSource(container: SwiftDataContainer.shared()))
     }
     
     private func createDataSource() -> APICurrenciesBasicDataSourceProtocol {

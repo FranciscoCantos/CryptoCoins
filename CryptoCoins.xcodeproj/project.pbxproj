@@ -22,6 +22,10 @@
 		645B65E32BB3328C00118986 /* CryptoListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B65E22BB3328C00118986 /* CryptoListFactory.swift */; };
 		645B65E52BB3386500118986 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B65E42BB3386500118986 /* ContentView.swift */; };
 		645B65E72BB3709C00118986 /* SearchCryptoListUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B65E62BB3709C00118986 /* SearchCryptoListUseCase.swift */; };
+		645B65EA2BB4240B00118986 /* SwiftDataCacheDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B65E92BB4240B00118986 /* SwiftDataCacheDataSource.swift */; };
+		645B65EC2BB4243B00118986 /* CryptoCurrencyInfoBasicData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B65EB2BB4243B00118986 /* CryptoCurrencyInfoBasicData.swift */; };
+		645B65EE2BB4264700118986 /* SwiftDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B65ED2BB4264700118986 /* SwiftDataContainer.swift */; };
+		645B65F02BB43D3500118986 /* CryptoCurrencyBasicInfoCacheStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 645B65EF2BB43D3500118986 /* CryptoCurrencyBasicInfoCacheStrategy.swift */; };
 		64C17D502BAC2CA1002AB96C /* CryptoCoinsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64C17D4F2BAC2CA1002AB96C /* CryptoCoinsApp.swift */; };
 		64C17D542BAC2CA3002AB96C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64C17D532BAC2CA3002AB96C /* Assets.xcassets */; };
 		64C17D582BAC2CA3002AB96C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64C17D572BAC2CA3002AB96C /* Preview Assets.xcassets */; };
@@ -101,6 +105,10 @@
 		645B65E22BB3328C00118986 /* CryptoListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoListFactory.swift; sourceTree = "<group>"; };
 		645B65E42BB3386500118986 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		645B65E62BB3709C00118986 /* SearchCryptoListUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCryptoListUseCase.swift; sourceTree = "<group>"; };
+		645B65E92BB4240B00118986 /* SwiftDataCacheDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataCacheDataSource.swift; sourceTree = "<group>"; };
+		645B65EB2BB4243B00118986 /* CryptoCurrencyInfoBasicData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCurrencyInfoBasicData.swift; sourceTree = "<group>"; };
+		645B65ED2BB4264700118986 /* SwiftDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDataContainer.swift; sourceTree = "<group>"; };
+		645B65EF2BB43D3500118986 /* CryptoCurrencyBasicInfoCacheStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCurrencyBasicInfoCacheStrategy.swift; sourceTree = "<group>"; };
 		64C17D4C2BAC2CA1002AB96C /* CryptoCoins.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoCoins.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64C17D4F2BAC2CA1002AB96C /* CryptoCoinsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoCoinsApp.swift; sourceTree = "<group>"; };
 		64C17D532BAC2CA3002AB96C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -180,8 +188,19 @@
 			isa = PBXGroup;
 			children = (
 				645B65D72BB3285800118986 /* CacheCurrenciesBasicDataSource.swift */,
+				645B65EF2BB43D3500118986 /* CryptoCurrencyBasicInfoCacheStrategy.swift */,
 			);
 			path = Cache;
+			sourceTree = "<group>";
+		};
+		645B65E82BB423ED00118986 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				645B65E92BB4240B00118986 /* SwiftDataCacheDataSource.swift */,
+				645B65EB2BB4243B00118986 /* CryptoCurrencyInfoBasicData.swift */,
+				645B65ED2BB4264700118986 /* SwiftDataContainer.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		64C17D432BAC2CA1002AB96C = {
@@ -357,6 +376,7 @@
 		64C17DA82BAF3FD3002AB96C /* Infraesctructure */ = {
 			isa = PBXGroup;
 			children = (
+				645B65E82BB423ED00118986 /* Data */,
 				64C17DA92BAF3FE4002AB96C /* Networking */,
 			);
 			path = Infraesctructure;
@@ -574,6 +594,7 @@
 				64C17DB32BAF7FE6002AB96C /* GlobalCryptoView.swift in Sources */,
 				64C17DD42BB09453002AB96C /* CryptoDetailView.swift in Sources */,
 				64C17D852BAC30DD002AB96C /* DomainError.swift in Sources */,
+				645B65EE2BB4264700118986 /* SwiftDataContainer.swift in Sources */,
 				645B65D02BB3007C00118986 /* CryptoCurrencyBasicInfo.swift in Sources */,
 				64C17DBE2BB05937002AB96C /* Double.swift in Sources */,
 				645B65CC2BB2E42000118986 /* View.swift in Sources */,
@@ -582,6 +603,7 @@
 				64C17DA72BAF3ED5002AB96C /* HTTPClient.swift in Sources */,
 				64C17DD02BB08303002AB96C /* PriceHistoryDomainMapper.swift in Sources */,
 				645B65CE2BB2E58C00118986 /* DaysSelection.swift in Sources */,
+				645B65F02BB43D3500118986 /* CryptoCurrencyBasicInfoCacheStrategy.swift in Sources */,
 				64C17DCC2BB08205002AB96C /* APIPricesDataSource.swift in Sources */,
 				64C17DAB2BAF768D002AB96C /* HTTPErrorResolver.swift in Sources */,
 				64C17DC02BB0741F002AB96C /* PresentationErrorMapper.swift in Sources */,
@@ -595,6 +617,8 @@
 				64C17D502BAC2CA1002AB96C /* CryptoCoinsApp.swift in Sources */,
 				64C17D8F2BAC9F4A002AB96C /* DomainErrorMapper.swift in Sources */,
 				64C17D832BAC30A1002AB96C /* GlobalCryptoRepositoryProtocol.swift in Sources */,
+				645B65EA2BB4240B00118986 /* SwiftDataCacheDataSource.swift in Sources */,
+				645B65EC2BB4243B00118986 /* CryptoCurrencyInfoBasicData.swift in Sources */,
 				64C17DC22BB07F11002AB96C /* PriceHistory.swift in Sources */,
 				64C17D9B2BACA246002AB96C /* HTTPClientError.swift in Sources */,
 				645B65DF2BB32CF700118986 /* CryptoCurrencyBasicViewItem.swift in Sources */,

@@ -33,21 +33,20 @@ struct CryptoDetailView: View {
                     ForEach(viewModel.dataPoints) { data in
                         LineMark(x: .value("Date", data.date), y: .value("Price", data.price))
                     }
-                    .interpolationMethod(.cardinal)
                     
                     ForEach(viewModel.dataPoints) { data in
                         AreaMark(x: .value("Date", data.date), y: .value("Price", data.price))
                     }
-                    .interpolationMethod(.cardinal)
                     .foregroundStyle(linearGradient)
                 }
                 .chartLegend(.visible)
                 .padding(EdgeInsets(top: 0, leading: 20, bottom: 20, trailing: 20))
                 .isHidden(viewModel.errorMessage != nil)
+                
             }.padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
-            .onAppear {
-                viewModel.onAppear()
-            }
+                .onAppear {
+                    viewModel.onAppear()
+                }
             
             if viewModel.showLoading {
                 ProgressView()
