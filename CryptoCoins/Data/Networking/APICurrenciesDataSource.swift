@@ -1,4 +1,10 @@
 import Foundation
+
+protocol APICurrenciesDataSourceProtocol {
+    func getGlobalCryptoSimbols() async -> Result<[String], HTTPClientError>
+    func getCryptoCurrencies() async -> Result<[CryptoCurrencyBasicDTO], HTTPClientError>
+    func getPriceInfoForCryptos(id: [String]) async -> Result<[String: CryptoCurrencyPriceInfoDTO], HTTPClientError>
+}
  
 class APICurrenciesDataSource: APICurrenciesDataSourceProtocol {
     private let httpClient: HTTPClientProtocol
@@ -79,5 +85,24 @@ class APICurrenciesDataSource: APICurrenciesDataSourceProtocol {
         guard let error = error else { return .generic }
         
         return error
+    }
+}
+
+extension APICurrenciesDataSource: APICurrenciesBasicDataSourceProtocol {
+    func getBasicCryptoCurrencies() async -> Result<[CryptoCurrencyBasicDTO], HTTPClientError> {
+        let request = HTTPRequest(baseURL: baseURL,
+                                  path: Paths.coinsList.rawValue,
+                                  method: .get)
+        let result = await httpClient.makeRequest(request)
+        
+        guard case .success(let data) = result else {
+            return .failure(handleError(error: result.failureValue as? HTTPClientError))
+        }
+        
+        guard let cryptos = try? JSONDecoder().decode([CryptoCurrencyBasicDTO].self, from: data) else {
+            return .failure(.parsingError)
+        }
+        
+        return .success(cryptos)
     }
 }

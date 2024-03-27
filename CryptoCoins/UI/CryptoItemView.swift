@@ -1,10 +1,3 @@
-//
-//  CryptoItemView.swift
-//  CryptoCoins
-//
-//  Created by Kurro on 24/3/24.
-//
-
 import SwiftUI
 
 struct CryptoItemView: View {

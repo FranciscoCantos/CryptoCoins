@@ -1,5 +1,9 @@
 import Foundation
 
+protocol APIPricesDataSourceProtocol {
+    func getPriceHistory(id: String, days: Int) async -> Result<PriceHistoryDTO, HTTPClientError>
+}
+
 class APIPricesDataSource: APIPricesDataSourceProtocol {
     private let httpClient: HTTPClientProtocol
     private let baseURL = "https://api.coingecko.com/api/v3/"

@@ -19,11 +19,11 @@ class GlobalCryptoRepository: GlobalCryptoRepositoryProtocol {
             return .failure(errorMapper.map(error: symbolsResult.failureValue as? HTTPClientError))
         }
         
-        guard case .success(let cryptosResult) = cryptosResult else {
+        guard case .success(let cryptosList) = cryptosResult else {
             return .failure(errorMapper.map(error: cryptosResult.failureValue as? HTTPClientError))
         }
         
-        let builders = domainMapper.getCryptoCurrencyBuilders(symbols: symbolsResult, cryptos: cryptosResult)
+        let builders = domainMapper.getCryptoCurrencyBuilders(symbols: symbolsResult, cryptos: cryptosList)
         let ids = builders.map { $0.id }
         
         let priceInfoResult = await apiDataSource.getPriceInfoForCryptos(id: ids)
